@@ -854,3 +854,100 @@ body.adminstatus td:hover .consult-button {
     display: inline-block; /* Mostrar el botón solo cuando se pase el mouse por encima de la celda */
 }
 
+/* Contenedor de la sección de mesas */
+#mesas-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Flexbox para el contenedor de mesas */
+.table-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 100%;
+}
+
+
+
+/* Estilos para las mesas */
+.table-box {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 150px;
+    height: 200px; /* Asegura una altura uniforme */
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #ff4c4c;
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Estilo del botón de agregar mesa */
+.add-table-button {
+    width: 50px;
+    height: 50px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/*
+
+/* Popup overlay */
+.popup-overlay {
+    display: none; /* Ocultar por defecto */
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.popup {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+}
