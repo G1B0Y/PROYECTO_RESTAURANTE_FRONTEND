@@ -187,6 +187,86 @@ p {
 }
 
 #inicio,#we {
-    padding-top: 80px; /* Ajusta el valor según tus necesidades */
+    padding-top: 100px; /* Ajusta el valor según tus necesidades */
     margin-top: -80px; /* Alinea la sección con el desplazamiento */
+}
+
+.footer {
+    background-color: #c70000;
+    color: white;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.footer-column {
+    flex: 1;
+    margin: 10px;
+    max-width: 200px;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+    text-decoration: underline;
+}
+
+.numbers {
+    display: block;
+    color: white;
+    margin: 5px 0;
+}
+
+/* Contenedor de efecto Parallax */
+.parallax-section {
+    background-image: url('images/mesa.jpg'); /* Reemplaza 'URL_DE_TU_IMAGEN' con la URL real de la imagen */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 70vh; /* Ajusta la altura según tus necesidades */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+/* Contenido dentro de la sección Parallax */
+.parallax-section .parallax-content {
+    background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente para hacer que el texto sea más legible */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Texto de la sección */
+.parallax-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.parallax-section p {
+    font-size: 1.2em;
+    margin: 0;
 }
