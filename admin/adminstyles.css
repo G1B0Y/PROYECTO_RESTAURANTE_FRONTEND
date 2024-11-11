@@ -541,6 +541,7 @@ body.adminacount .top-bar-logout a:hover {
 /* Contenedor principal y barra lateral */
 body.adminacount .container {
     display: flex;
+    height: 600px;
     max-width: 1200px;
     margin: 20px auto;
     background-color: #fff;
@@ -605,7 +606,8 @@ body.adminacount .section.active {
 
 body.adminacount .section h2 {
     font-size: 2rem;
-    margin-bottom: 10px;
+    margin-top: 45px;
+    margin-bottom: 0;
     color: #333;
 }
 
