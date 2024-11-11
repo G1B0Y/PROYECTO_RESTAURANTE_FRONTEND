@@ -653,3 +653,204 @@ body.adminacount .btn {
 body.adminacount .btn:hover {
     background-color: #7b1fa2;
 }
+
+/* Estilos específicos para adminstatus (statustable) */
+
+body.adminstatus {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+body.adminstatus h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+body.adminstatus .controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+body.adminstatus .controls button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body.adminstatus .controls button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+body.adminstatus .calendar-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+body.adminstatus .month {
+    display: none;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    transition: opacity 0.5s;
+}
+
+body.adminstatus .month h2 {
+    background-color: #4caf50;
+    color: white;
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    font-size: 1.5rem;
+}
+
+body.adminstatus table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    table-layout: fixed;
+}
+
+body.adminstatus th {
+    background-color: #4caf50;
+    color: white;
+    padding: 8px;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+}
+
+body.adminstatus td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    vertical-align: top;
+    height: 80px;
+    background-color: #fafafa; /* Mantener el fondo de la celda sin cambio */
+    font-size: 0.85rem;
+    cursor: pointer;
+    position: relative;
+}
+
+body.adminstatus td:hover {
+    background-color: #f1f1f1;
+}
+
+/* Ajustes para el texto "Consultar" que aparece al pasar el ratón */
+body.adminstatus td::after {
+    content: ""; /* Eliminar el texto de "Consultar" */
+}
+
+body.adminstatus td.empty {
+    background-color: #f0f0f0;
+    cursor: default;
+}
+
+/* Estilos del interruptor en adminstatus */
+body.adminstatus .switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+body.adminstatus .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+body.adminstatus .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: green; /* Color predeterminado verde */
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+body.adminstatus .switch input:not(:checked) + .slider {
+    background-color: red; /* Cambia a rojo solo cuando esté desmarcado */
+}
+
+body.adminstatus .slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+body.adminstatus input:checked + .slider {
+    background-color: green; /* Mantiene el interruptor en verde si está activado */
+}
+
+body.adminstatus input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+/* Asegurarse de que el fondo de las celdas no cambie */
+body.adminstatus td {
+    background-color: #fafafa !important; /* Mantiene el fondo constante */
+}
+
+body.adminstatus td .consult-button {
+    margin-top: 5px;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+body.adminstatus td .consult-button:hover {
+    background-color: #0056b3;
+}
+
+body.adminstatus td .consult-button {
+    display: none; /* Ocultar el botón por defecto */
+    margin-top: 5px;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+body.adminstatus td:hover .consult-button {
+    display: inline-block; /* Mostrar el botón solo cuando se pase el mouse por encima de la celda */
+}
+
