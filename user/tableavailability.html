@@ -43,6 +43,29 @@
             function closePopup() {
                 document.getElementById('popup').style.display = 'none';
                 document.getElementById('popup-overlay').style.display = 'none';
+                document.getElementById('resultado').style.display = 'none';
+                document.getElementById('confirmacion').style.display = 'none';
+            }
+
+            function consultarDisponibilidad() {
+                const horarioEntrada = document.getElementById('entrada').value;
+                const horarioSalida = document.getElementById('salida').value;
+                if (horarioEntrada && horarioSalida) {
+                    document.getElementById('resultado').style.display = 'block';
+                    document.getElementById('popup').style.display = 'none';
+                    document.getElementById('popup-overlay').style.display = 'block';
+                } else {
+                    alert('Por favor, complete ambos horarios de entrada y salida.');
+                }
+            }
+
+            function reservar() {
+                document.getElementById('resultado').style.display = 'none';
+                document.getElementById('confirmacion').style.display = 'block';
+            }
+
+            function volverInicio() {
+                window.location.href = 'userhome.html'; // Reemplaza con el nombre del archivo al que deseas dirigir.
             }
         </script>
     </head>
@@ -53,7 +76,6 @@
             <button onclick="nextMonth()">Siguiente &#9654;</button>
         </div>
         <div class="calendar-container">
-            <!-- Generación del calendario con JavaScript -->
             <script>
                 const currentYear = 2024;
                 const months = [
@@ -64,7 +86,7 @@
                     31, (currentYear % 4 === 0 && (currentYear % 100 !== 0 || currentYear % 400 === 0)) ? 29 : 28,
                     31, 30, 31, 30, 31, 31, 30, 31, 30, 31
                 ];
-                let startDay = 2; // Suponiendo que el 1 de enero de 2024 es un lunes
+                let startDay = 2;
 
                 for (let i = 0; i < 12; i++) {
                     const days = daysInMonth[i];
@@ -93,7 +115,7 @@
                         document.write('</tr>');
                         if (dayCounter > days) break;
                     }
-                    startDay = (startDay + days) % 7; // Ajusta el primer día de la semana para el próximo mes
+                    startDay = (startDay + days) % 7;
                     document.write('</tbody></table></div>');
                 }
             </script>
@@ -104,9 +126,29 @@
         <div id="popup" class="popup">
             <div class="popup-content">
                 <h2 id="popup-title">Colocar el horario</h2>
-                <input type="time" class="time-input" name="popup-hour">
-                <button onclick="closePopup()">Consultar</button>
+                <label for="entrada">Horario de entrada:</label>
+                <input type="time" id="entrada" class="time-input"><br>
+                <label for="salida">Horario de salida:</label>
+                <input type="time" id="salida" class="time-input">
+                <button onclick="consultarDisponibilidad()">Consultar</button>
                 <button onclick="closePopup()">Cerrar</button>
+            </div>
+        </div>
+
+        <!-- Popup de resultado -->
+        <div id="resultado" class="popup">
+            <div class="popup-content">
+                <h3>Esta mesa está disponible</h3>
+                <button onclick="reservar()">Reservar</button>
+                <button onclick="closePopup()">Cancelar</button>
+            </div>
+        </div>
+
+        <!-- Popup de confirmación -->
+        <div id="confirmacion" class="popup">
+            <div class="popup-content">
+                <h3>Tu reserva fue hecha exitosamente</h3>
+                <button onclick="volverInicio()">Volver al inicio</button>
             </div>
         </div>
     </body>
