@@ -1,12 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesas</title>
     <link rel="stylesheet" href="adminstyles.css">
     <link rel="icon" href="../images/icono.png" type="image/png">
+    <style>
+        .title-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .edit-button {
+            padding: 5px 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .edit-button:hover {
+            background-color: #45a049;
+        }
+
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 14px;
+            display: none;
+            cursor: pointer;
+        }
+
+        .table-box {
+            position: relative;
+            width: 150px;
+            height: 200px;
+            background-color: #333;
+            text-align: center;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            transition: transform 0.3s;
+            margin-right: 20px;
+        }
+
+        .edit-mode .delete-button {
+            display: block;
+        }
+
+        /* Botón circular de agregar */
+        .add-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: #4caf50;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Estilos del popup */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .popup-content {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            text-align: center;
+        }
+
+        .popup-content h2 {
+            margin-bottom: 15px;
+        }
+
+        .popup-content input[type="number"] {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .popup-content button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .save-button {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .cancel-button {
+            background-color: #ccc;
+            color: #333;
+            margin-left: 10px;
+        }
+    </style>
 </head>
+
 <body>
     <div class="head">
         <div class="logo">
@@ -17,7 +153,6 @@
             <a href="#mesas-container">Mesas</a>
             <a href="#contacto">Contacto</a>
         </nav>
-        <!-- Menú de Usuario -->
         <div class="user-menu">
             <span class="user-name" onclick="toggleDropdown()">¡Hola Admin!</span>
             <div class="dropdown-menu" id="dropdownMenu">
@@ -32,39 +167,34 @@
         <p>Bienvenido a la página de reservas. Aquí puedes consultar disponibilidad y ver nuestro menú.</p>
     </header>
 
-    <!-- Sección de Mesas -->
+    <!-- Sección de Mesas (dinámica) -->
     <section id="mesas-container">
-        <h2 class="title">MESAS</h2>
-        <div class="table-container">
-            <a href="statustable.html">
-                <div class="table-box">
-                    <img src="../images/mesa4personas.jpg" alt="Mesa 1">
-                    <h3>Mesa #1 (4 Personas)</h3>
-                </div>
-            </a>
-            <a href="statustable.html">
-                <div class="table-box">
-                    <img src="../images/mesa4personas.jpg" alt="Mesa 2">
-                    <h3>Mesa #2 (4 Personas)</h3>
-                </div>
-            </a>
-            <a href="statustable.html">
-                <div class="table-box">
-                    <img src="../images/mesa4personas.jpg" alt="Mesa 3">
-                    <h3>Mesa #3 (5 Personas)</h3>
-                </div>
-            </a>
-            <a href="statustable.html">
-                <div class="table-box">
-                    <img src="../images/mesa4personas.jpg" alt="Mesa 4">
-                    <h3>Mesa #4 (5 Personas)</h3>
-                </div>
-            </a>
+        <div class="title-container">
+            <h2 class="title">MESAS</h2>
+            <button class="edit-button" onclick="toggleEditMode()">Editar</button>
         </div>
+        <div class="table-container" id="tableContainer">
+            <!-- Mesas se agregarán dinámicamente aquí -->
+        </div>
+        <!-- Botón de agregar mesa -->
+        <button class="add-button" onclick="openAddPopup()">+</button>
     </section>
 
     <div class="espacio">
         <p> </p>
+    </div>
+
+    <!-- Popup de agregar mesa -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-content">
+            <h2>Agregar Mesa</h2>
+            <label>Número de Mesa:</label>
+            <input type="number" id="mesaNumero" min="1" required>
+            <label>Aforo:</label>
+            <input type="number" id="mesaAforo" min="1" required>
+            <button class="save-button" onclick="guardarMesa()">Guardar</button>
+            <button class="cancel-button" onclick="closeAddPopup()">Cancelar</button>
+        </div>
     </div>
 
     <!-- Sección de Contacto -->
@@ -76,13 +206,14 @@
     </section>
 
     <script>
+        let editMode = false;
+
         function toggleDropdown() {
             var dropdown = document.getElementById("dropdownMenu");
             dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
         }
 
-        // Cerrar el menú si se hace clic fuera de él
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             if (!event.target.matches('.user-name')) {
                 var dropdown = document.getElementById("dropdownMenu");
                 if (dropdown.style.display === "block") {
@@ -90,6 +221,93 @@
                 }
             }
         };
+
+        function crearMesa(id, capacidad) {
+            const tableContainer = document.getElementById("tableContainer");
+
+            const mesa = document.createElement("div");
+            mesa.classList.add("table-box");
+
+            const link = document.createElement("a");
+            link.href = "statustable.html";
+
+            const img = document.createElement("img");
+            img.src = "../images/mesa4personas.jpg";
+            img.alt = `Mesa ${id}`; // Corrección en comillas y `${id}`
+
+            const titulo = document.createElement("h3");
+            titulo.innerText = `Mesa #${id} (${capacidad} Personas)`; // Corrección en comillas y `${}`
+
+            const deleteButton = document.createElement("button");
+            deleteButton.classList.add("delete-button");
+            deleteButton.innerText = "✕";
+            deleteButton.onclick = function () {
+                mesa.remove();
+            };
+
+            link.appendChild(img);
+            link.appendChild(titulo);
+            mesa.appendChild(link);
+            mesa.appendChild(deleteButton);
+
+            tableContainer.appendChild(mesa);
+        }
+
+        function guardarMesa() {
+            const numero = document.getElementById("mesaNumero").value;
+            const aforo = document.getElementById("mesaAforo").value;
+
+            if (numero && aforo) {
+                crearMesa(numero, aforo);
+                closeAddPopup();
+            } else {
+                alert("Por favor, ingrese todos los datos.");
+            }
+        }
+
+        window.onload = function () {
+            for (let i = 1; i <= 3; i++) {
+                crearMesa(i, i === 2 || i === 3 ? 4 : 3); // Ejemplo de mesas con diferentes capacidades
+            }
+        };
+
+
+        function toggleEditMode() {
+            editMode = !editMode;
+            const tableContainer = document.getElementById("tableContainer");
+            if (editMode) {
+                tableContainer.classList.add("edit-mode");
+            } else {
+                tableContainer.classList.remove("edit-mode");
+            }
+        }
+
+        function openAddPopup() {
+            document.getElementById("popupOverlay").style.display = "block";
+        }
+
+        function closeAddPopup() {
+            document.getElementById("popupOverlay").style.display = "none";
+        }
+
+        function guardarMesa() {
+            const numero = document.getElementById("mesaNumero").value;
+            const aforo = document.getElementById("mesaAforo").value;
+
+            if (numero && aforo) {
+                crearMesa(numero, aforo);
+                closeAddPopup();
+            } else {
+                alert("Por favor, ingrese todos los datos.");
+            }
+        }
+
+        window.onload = function () {
+            for (let i = 1; i <= 3; i++) {
+                crearMesa(i, i === 2 || i === 3 ? 4 : 3); // Ejemplo de mesas con diferentes capacidades
+            }
+        };
     </script>
 </body>
+
 </html>
