@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Calendario del Año</title>
+        <link rel="stylesheet" href="adminstyles.css">
+        <script>
+            let currentMonthIndex = 0;
+
+            function showMonth(index) {
+                const months = document.querySelectorAll('.month');
+                months.forEach((month, i) => {
+                    month.style.display = i === index ? 'block' : 'none';
+                });
+            }
+
+            function nextMonth() {
+                const totalMonths = document.querySelectorAll('.month').length;
+                currentMonthIndex = (currentMonthIndex + 1) % totalMonths;
+                showMonth(currentMonthIndex);
+            }
+
+            function prevMonth() {
+                const totalMonths = document.querySelectorAll('.month').length;
+                currentMonthIndex = (currentMonthIndex - 1 + totalMonths) % totalMonths;
+                showMonth(currentMonthIndex);
+            }
+
+            window.onload = function() {
+                showMonth(currentMonthIndex);
+            };
+
+            function toggleStatus(button, cell) {
+                if (button.checked) {
+                    cell.style.backgroundColor = 'green';
+                } else {
+                    cell.style.backgroundColor = 'red';
+                }
+            }
+
+            function resetStatus(cell) {
+                cell.style.backgroundColor = '#fafafa'; // Restablece al color original definido por CSS
+                const checkbox = cell.querySelector('input[type="checkbox"]');
+                if (checkbox) {
+                    checkbox.checked = false; // Desactiva el interruptor si estaba activado
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Calendario del Año 2024</h1>
+        <div class="controls">
+            <button onclick="prevMonth()">&#9664; Anterior</button>
+            <button onclick="nextMonth()">Siguiente &#9654;</button>
+        </div>
+        <div class="calendar-container">
+            <!-- Calendario generado dinámicamente con JavaScript -->
+            <script>
+                const currentYear = 2024;
+                const months = [
+                    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+                ];
+                const daysInMonth = [
+                    31, (currentYear % 4 === 0 && (currentYear % 100 !== 0 || currentYear % 400 === 0)) ? 29 : 28,
+                    31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+                ];
+                let startDay = 2; // Suponiendo que el 1 de enero de 2024 es un lunes (ajustar según el año)
+
+                for (let i = 0; i < 12; i++) {
+                    const days = daysInMonth[i];
+                    document.write('<div class="month">');
+                    document.write('<h2>' + months[i] + '</h2>');
+                    document.write('<table>');
+                    document.write('<thead><tr><th>Dom</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th></tr></thead>');
+                    document.write('<tbody>');
+                    let dayCounter = 1;
+                    let started = false;
+                    for (let row = 0; row < 6; row++) {
+                        document.write('<tr>');
+                        for (let col = 0; col < 7; col++) {
+                            if (!started && col < startDay) {
+                                document.write('<td class="empty"></td>');
+                            } else if (dayCounter <= days) {
+                                const cellId = `cell-${i}-${dayCounter}`;
+                                document.write('<td id="' + cellId + '">');
+                                document.write(dayCounter);
+                                document.write('<br><button onclick="resetStatus(document.getElementById(\'' + cellId + '\'))">Consultar</button>');
+                                document.write('<br><label class="switch">');
+                                document.write('<input type="checkbox" onclick="toggleStatus(this, document.getElementById(\'' + cellId + '\'))">');
+                                document.write('<span class="slider"></span>');
+                                document.write('</label>');
+                                document.write('</td>');
+                                dayCounter++;
+                                started = true;
+                            } else {
+                                document.write('<td class="empty"></td>');
+                            }
+                        }
+                        document.write('</tr>');
+                        if (dayCounter > days) break;
+                    }
+                    startDay = (startDay + days) % 7; // Ajustar el primer día de la semana para el próximo mes
+                    document.write('</tbody></table></div>');
+                }
+            </script>
+        </div>
+    </body>
+</html>

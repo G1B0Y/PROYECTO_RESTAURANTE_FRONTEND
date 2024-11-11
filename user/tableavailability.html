@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Calendario del Año</title>
+        <link rel="stylesheet" href="userstyles.css">
+        <script>
+            let currentMonthIndex = 0;
+
+            function showMonth(index) {
+                const months = document.querySelectorAll('.month');
+                months.forEach((month, i) => {
+                    month.style.display = i === index ? 'block' : 'none';
+                });
+            }
+
+            function nextMonth() {
+                const totalMonths = document.querySelectorAll('.month').length;
+                currentMonthIndex = (currentMonthIndex + 1) % totalMonths;
+                showMonth(currentMonthIndex);
+            }
+
+            function prevMonth() {
+                const totalMonths = document.querySelectorAll('.month').length;
+                currentMonthIndex = (currentMonthIndex - 1 + totalMonths) % totalMonths;
+                showMonth(currentMonthIndex);
+            }
+
+            window.onload = function() {
+                showMonth(currentMonthIndex);
+            };
+
+            function showPopup(month, day) {
+                const popup = document.getElementById('popup');
+                const popupOverlay = document.getElementById('popup-overlay');
+                const popupTitle = document.getElementById('popup-title');
+                const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+                popupTitle.textContent = `Colocar el horario para ${day} de ${monthNames[month]}`;
+                popup.style.display = 'block';
+                popupOverlay.style.display = 'block';
+            }
+
+            function closePopup() {
+                document.getElementById('popup').style.display = 'none';
+                document.getElementById('popup-overlay').style.display = 'none';
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Calendario del Año 2024</h1>
+        <div class="controls">
+            <button onclick="prevMonth()">&#9664; Anterior</button>
+            <button onclick="nextMonth()">Siguiente &#9654;</button>
+        </div>
+        <div class="calendar-container">
+            <!-- Generación del calendario con JavaScript -->
+            <script>
+                const currentYear = 2024;
+                const months = [
+                    "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+                ];
+                const daysInMonth = [
+                    31, (currentYear % 4 === 0 && (currentYear % 100 !== 0 || currentYear % 400 === 0)) ? 29 : 28,
+                    31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+                ];
+                let startDay = 2; // Suponiendo que el 1 de enero de 2024 es un lunes
+
+                for (let i = 0; i < 12; i++) {
+                    const days = daysInMonth[i];
+                    document.write('<div class="month">');
+                    document.write('<h2>' + months[i] + '</h2>');
+                    document.write('<table>');
+                    document.write('<thead><tr><th>Dom</th><th>Lun</th><th>Mar</th><th>Mié</th><th>Jue</th><th>Vie</th><th>Sáb</th></tr></thead>');
+                    document.write('<tbody>');
+                    let dayCounter = 1;
+                    let started = false;
+                    for (let row = 0; row < 6; row++) {
+                        document.write('<tr>');
+                        for (let col = 0; col < 7; col++) {
+                            if (!started && col < startDay) {
+                                document.write('<td class="empty"></td>');
+                            } else if (dayCounter <= days) {
+                                document.write('<td onclick="showPopup(' + i + ', ' + dayCounter + ')">');
+                                document.write(dayCounter);
+                                document.write('</td>');
+                                dayCounter++;
+                                started = true;
+                            } else {
+                                document.write('<td class="empty"></td>');
+                            }
+                        }
+                        document.write('</tr>');
+                        if (dayCounter > days) break;
+                    }
+                    startDay = (startDay + days) % 7; // Ajusta el primer día de la semana para el próximo mes
+                    document.write('</tbody></table></div>');
+                }
+            </script>
+        </div>
+
+        <!-- Popup Modal -->
+        <div id="popup-overlay" class="popup-overlay" onclick="closePopup()"></div>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <h2 id="popup-title">Colocar el horario</h2>
+                <input type="time" class="time-input" name="popup-hour">
+                <button onclick="closePopup()">Consultar</button>
+                <button onclick="closePopup()">Cerrar</button>
+            </div>
+        </div>
+    </body>
+</html>
