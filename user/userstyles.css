@@ -459,3 +459,198 @@ td.empty {
     height: 300px;
     padding: 80px ;
 }
+
+/* Estilos para el contenedor del menú de usuario */
+.user-menu {
+    position: relative;
+    margin-right: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.user-name {
+    font-size: 18px;
+    color: #fff;
+    padding: 10px;
+    background: #171717;
+    border-radius: 5px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #1f1d1d;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    min-width: 150px;
+    z-index: 1000;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    text-align: left;
+    transition: background 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background-color: #333;
+}
+
+/* Estilos específicos para adminacount */
+
+body.adminacount {
+    background-color: #f8f9fa; /* Fondo claro */
+    color: #333;
+    text-align: left;
+}
+
+/* Estilos para la barra superior de adminacount */
+body.adminacount .top-bar {
+    background-color: #171717;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.adminacount .top-bar-logo .logo-img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+body.adminacount .top-bar-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+body.adminacount .top-bar-logout a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+body.adminacount .top-bar-logout a:hover {
+    color: #9c27b0;
+}
+
+/* Contenedor principal y barra lateral */
+body.adminacount .container {
+    display: flex;
+    height: 600px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+body.adminacount .sidebar {
+    width: 250px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+}
+
+body.adminacount .profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+body.adminacount .profile-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #9c27b0;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 2rem;
+    line-height: 60px;
+}
+
+body.adminacount .sidebar-menu a {
+    display: block;
+    padding: 15px;
+    margin: 5px 0;
+    color: #333;
+    text-decoration: none;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: left;
+}
+
+body.adminacount .sidebar-menu a:hover,
+body.adminacount .sidebar-menu a.active {
+    background-color: #9c27b0;
+    color: #fff;
+}
+
+/* Sección de contenido de adminacount */
+body.adminacount .content {
+    flex-grow: 1;
+    padding: 40px;
+}
+
+body.adminacount .section {
+    display: none;
+}
+
+body.adminacount .section.active {
+    display: block;
+}
+
+body.adminacount .section h2 {
+    font-size: 2rem;
+    margin-top: 45px;
+    margin-bottom: 0;
+    color: #333;
+}
+
+body.adminacount .section p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Formularios en adminacount */
+body.adminacount .profile-form label,
+body.adminacount .password-form label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+body.adminacount .profile-form input,
+body.adminacount .password-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Botón específico para cambiar contraseña en adminacount */
+body.adminacount .btn {
+    display: block;
+    width: 100%;
+    background-color: #9c27b0;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+body.adminacount .btn:hover {
+    background-color: #7b1fa2;
+}
