@@ -6,16 +6,14 @@
     <title>Iniciar Sesion</title>
     <link rel="stylesheet" href="loginstyles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
 </head>
 <body>
     <div class="content">
         <div class="text">Login Form</div>
-        <form action="#">
-
+        <form onsubmit="handleLogin(event)">
             <div class="field">
                 <span class="fa fa-user"></span>
-                <input type="email" placeholder="Email" required>
+                <input type="email" id="email" placeholder="Email" required>
             </div>
 
             <div class="field">
@@ -33,7 +31,6 @@
             <div class="singup-link">No estas registrado?
                 <a href="@">Registrate</a>
             </div>
-
         </form>
     </div>
 
@@ -49,6 +46,21 @@
                 passwordInput.type = 'password';
                 toggleIcon.classList.remove('fa-eye-slash');
                 toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        function handleLogin(event) {
+            event.preventDefault(); // Evita que el formulario se envíe automáticamente
+            const email = document.getElementById('email').value;
+
+            if (email.includes('@')) {
+                if (email === 'admin@hotmail.com') {
+                    window.location.href = '../admin/adminhome.html';
+                } else {
+                    window.location.href = '../user/userhome.html';
+                }
+            } else {
+                alert('Por favor, ingresa un correo válido con "@"');
             }
         }
     </script>
