@@ -105,6 +105,12 @@
             font-size: 14px;
         }
 
+        .cancellation-note {
+            color: #e74c3c;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+
         .button-cancel {
             background-color: #e74c3c;
             color: white;
@@ -118,8 +124,60 @@
             margin-top: 10px;
         }
 
-        .button-cancel:hover {
+        .button-cancel.disabled {
+            background-color: #ccc;
+            cursor: default;
+        }
+
+        .button-cancel:hover:not(.disabled) {
             background-color: #c0392b;
+        }
+
+        /* Estilos del popup de confirmación */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s;
+        }
+
+        .popup.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-content button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .popup-content .confirm {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .popup-content .cancel {
+            background-color: #ccc;
         }
     </style>
 </head>
@@ -136,14 +194,15 @@
             <div class="card">
                 <img src="/images/reserva.jpg" alt="Mesa con Plato">
                 <div class="card-content">
-                    <div class="card-header">Resturante Luxxxo's</div>
+                    <div class="card-header">Restaurante Luxxxo's</div>
                     <div class="card-info">
                         <p><strong>Fecha de reserva:</strong> 10/11/2024</p>
-                        <p><strong>Numero de mesa:</strong> 1</p>
+                        <p><strong>Número de mesa:</strong> 1</p>
                         <p><strong>Cantidad de personas:</strong> 3</p>
                         <p><strong>Persona que hizo la reserva:</strong> Juan Pérez</p>
+                        <p class="cancellation-note">La cancelación se puede hacer 10 minutos después de la reserva.</p>
                     </div>
-                    <button class="button-cancel">Cancelar reserva</button>
+                    <button class="button-cancel" onclick="showPopup(this)">Cancelar reserva</button>
                 </div>
             </div>
         </div>
@@ -159,10 +218,10 @@
             <div class="card">
                 <img src="/images/reserva.jpg" alt="Mesa con Plato">
                 <div class="card-content">
-                    <div class="card-header">Resturante Luxxxo's</div>
+                    <div class="card-header">Restaurante Luxxxo's</div>
                     <div class="card-info">
                         <p><strong>Fecha de reserva:</strong> 10/10/2024</p>
-                        <p><strong>Numero de mesa:</strong> 4</p>
+                        <p><strong>Número de mesa:</strong> 4</p>
                         <p><strong>Cantidad de personas:</strong> 2</p>
                         <p><strong>Persona que hizo la reserva:</strong> Juan Pérez</p>
                     </div>
@@ -172,10 +231,10 @@
             <div class="card">
                 <img src="/images/reserva.jpg" alt="Mesa con Plato">
                 <div class="card-content">
-                    <div class="card-header">Resturante Luxxxo's</div>
+                    <div class="card-header">Restaurante Luxxxo's</div>
                     <div class="card-info">
-                        <p><strong>Fecha de reserva:</strong> 10/19/2024</p>
-                        <p><strong>Numero de mesa:</strong> 4</p>
+                        <p><strong>Fecha de reserva:</strong> 15/09/2024</p>
+                        <p><strong>Número de mesa:</strong> 4</p>
                         <p><strong>Cantidad de personas:</strong> 5</p>
                         <p><strong>Persona que hizo la reserva:</strong> Juan Pérez</p>
                     </div>
@@ -185,10 +244,10 @@
             <div class="card">
                 <img src="/images/reserva.jpg" alt="Mesa con Plato">
                 <div class="card-content">
-                    <div class="card-header">Resturante Luxxxo's</div>
+                    <div class="card-header">Restaurante Luxxxo's</div>
                     <div class="card-info">
-                        <p><strong>Fecha de reserva:</strong> 10/08/2024</p>
-                        <p><strong>Numero de mesa:</strong> 1</p>
+                        <p><strong>Fecha de reserva:</strong> 05/08/2024</p>
+                        <p><strong>Número de mesa:</strong> 1</p>
                         <p><strong>Cantidad de personas:</strong> 3</p>
                         <p><strong>Persona que hizo la reserva:</strong> Juan Pérez</p>
                     </div>
@@ -197,10 +256,39 @@
         </div>
     </div>
 
+    <!-- Popup de confirmación -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <p>¿Estás seguro de cancelar la reserva?</p>
+            <button class="confirm" onclick="confirmCancel()">Sí</button>
+            <button class="cancel" onclick="closePopup()">No</button>
+        </div>
+    </div>
+
     <script>
         function toggleBar(barId) {
             const barContainer = document.getElementById(barId);
             barContainer.classList.toggle('open');
+        }
+
+        let cancelButton;
+
+        function showPopup(button) {
+            cancelButton = button;
+            const popup = document.getElementById("popup");
+            popup.classList.add("active");
+        }
+
+        function closePopup() {
+            const popup = document.getElementById("popup");
+            popup.classList.remove("active");
+        }
+
+        function confirmCancel() {
+            closePopup();
+            cancelButton.textContent = "Esta reserva fue cancelada";
+            cancelButton.classList.add("disabled");
+            cancelButton.disabled = true;
         }
     </script>
 </body>
