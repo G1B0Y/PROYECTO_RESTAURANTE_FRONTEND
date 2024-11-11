@@ -47,16 +47,15 @@
                 document.getElementById('confirmacion').style.display = 'none';
             }
 
+            function seleccionarHora(hora) {
+                const selectedTime = document.getElementById('selected-time');
+                selectedTime.textContent = `Hora seleccionada: ${hora}`;
+            }
+
             function consultarDisponibilidad() {
-                const horarioEntrada = document.getElementById('entrada').value;
-                const horarioSalida = document.getElementById('salida').value;
-                if (horarioEntrada && horarioSalida) {
-                    document.getElementById('resultado').style.display = 'block';
-                    document.getElementById('popup').style.display = 'none';
-                    document.getElementById('popup-overlay').style.display = 'block';
-                } else {
-                    alert('Por favor, complete ambos horarios de entrada y salida.');
-                }
+                document.getElementById('resultado').style.display = 'block';
+                document.getElementById('popup').style.display = 'none';
+                document.getElementById('popup-overlay').style.display = 'block';
             }
 
             function reservar() {
@@ -65,7 +64,7 @@
             }
 
             function volverInicio() {
-                window.location.href = 'userhome.html'; // Reemplaza con el nombre del archivo al que deseas dirigir.
+                window.location.href = 'nombre_de_tu_archivo.html'; // Reemplaza con el nombre del archivo al que deseas dirigir.
             }
         </script>
     </head>
@@ -121,15 +120,24 @@
             </script>
         </div>
 
-        <!-- Popup Modal -->
+        <!-- Popup Overlay -->
         <div id="popup-overlay" class="popup-overlay" onclick="closePopup()"></div>
+
+        <!-- Popup de Selección de Hora -->
         <div id="popup" class="popup">
             <div class="popup-content">
-                <h2 id="popup-title">Colocar el horario</h2>
-                <label for="entrada">Horario de entrada:</label>
-                <input type="time" id="entrada" class="time-input"><br>
-                <label for="salida">Horario de salida:</label>
-                <input type="time" id="salida" class="time-input">
+                <h2 id="popup-title">Selecciona el horario</h2>
+                <div class="time-grid">
+                    <!-- Generar intervalos de horas de 10 AM a 10 PM -->
+                    <script>
+                        for (let hour = 10; hour < 22; hour++) {
+                            const startHour = (hour <= 12 ? hour : hour - 12) + (hour < 12 ? " AM" : " PM");
+                            const endHour = (hour + 1 <= 12 ? hour + 1 : hour - 11) + (hour + 1 < 12 ? " AM" : " PM");
+                            document.write(`<div class="time-slot" onclick="seleccionarHora('${startHour} a ${endHour}')">${startHour} a ${endHour}</div>`);
+                        }
+                    </script>
+                </div>
+                <div id="selected-time" class="selected-time">Hora seleccionada: Ninguna</div>
                 <button onclick="consultarDisponibilidad()">Consultar</button>
                 <button onclick="closePopup()">Cerrar</button>
             </div>
