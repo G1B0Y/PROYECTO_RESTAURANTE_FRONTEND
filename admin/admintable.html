@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="head">
-        <div class="logo a">
+        <div class="logo">
             <a href="#">Logo</a>
         </div>
         <nav class="navbar">
@@ -16,6 +16,14 @@
             <a href="#mesas-container">Mesas</a>
             <a href="#contacto">Contacto</a>
         </nav>
+        <!-- Menú de Usuario -->
+        <div class="user-menu">
+            <span class="user-name" onclick="toggleDropdown()">¡Hola Admin!</span>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <a href="adminacount.html">Mi Cuenta</a>
+                <a href="logout.html">Cerrar Sesión</a>
+            </div>
+        </div>
     </div>
 
     <header class="content header">
@@ -65,5 +73,22 @@
         <p class="numbers">+51 923 264 519</p>
         <p class="numbers">+51 941 475 824</p>
     </section>
+
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById("dropdownMenu");
+            dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+        }
+
+        // Cerrar el menú si se hace clic fuera de él
+        window.onclick = function(event) {
+            if (!event.target.matches('.user-name')) {
+                var dropdown = document.getElementById("dropdownMenu");
+                if (dropdown.style.display === "block") {
+                    dropdown.style.display = "none";
+                }
+            }
+        };
+    </script>
 </body>
 </html>

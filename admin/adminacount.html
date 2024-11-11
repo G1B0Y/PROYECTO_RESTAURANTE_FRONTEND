@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cuenta</title>
+    <link rel="stylesheet" href="adminstyles.css">
+</head>
+<body class="adminacount">
+    <!-- Barra superior -->
+    <div class="top-bar">
+        <div class="top-bar-logo">
+            <a href="#"><img src="../images/logo.png" alt="Logo" class="logo-img"></a>
+            <span class="top-bar-title">Mi Cuenta</span>
+        </div>
+        <div class="top-bar-logout">
+            <a href="logout.html">Cerrar sesión</a>
+        </div>
+    </div>
+    
+    <!-- Contenedor principal -->
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile">
+                <span class="profile-icon">GC</span>
+                <h2>¡Hola Gabriel Coasaca!</h2>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#profile" onclick="showSection('profile')">Mi perfil</a>
+                <a href="#password" onclick="showSection('password')">Mi contraseña</a>
+                <a href="logout.html">Cerrar Sesión</a>
+            </nav>
+        </div>
+
+        <div class="content">
+            <!-- Sección de perfil -->
+            <section id="profile" class="section active">
+                <h2>Perfil</h2>
+                <p>Aquí encontrarás tus datos personales</p>
+                <form class="profile-form">
+                    <label>Nombre</label>
+                    <input type="text" value="Gabriel">
+                    <label>Apellido</label>
+                    <input type="text" value="Coasaca">
+                    <label>DNI</label>
+                    <input type="text" value="74068130" disabled>
+                    <label>Fecha de nacimiento</label>
+                    <input type="date" value="2003-08-30">
+                    <label>Teléfono</label>
+                    <input type="tel" value="+51 983566885">
+                    <label>Email</label>
+                    <input type="email" value="gcsta123@gmail.com">
+                </form>
+            </section>
+
+            <!-- Sección de contraseña -->
+            <section id="password" class="section">
+                <h2>Contraseña</h2>
+                <p>Modifica tu contraseña para mantener tu cuenta segura</p>
+                <form class="password-form">
+                    <label>Contraseña actual</label>
+                    <input type="password" placeholder="Contraseña actual">
+                    <label>Nueva contraseña</label>
+                    <input type="password" placeholder="Nueva contraseña">
+                    <label>Confirmar nueva contraseña</label>
+                    <input type="password" placeholder="Confirmar nueva contraseña">
+                    <button type="submit" class="btn">Cambiar contraseña</button>
+                </form>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+</body>
+</html>
