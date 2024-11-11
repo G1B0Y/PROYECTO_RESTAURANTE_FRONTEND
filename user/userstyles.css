@@ -18,9 +18,9 @@ body {
 
 /* Estilos para el encabezado principal */
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 50vh; /* Asegura que el tamaño de la imagen de fondo tenga la misma altura que la sección de MESAS */
+    background: url(../images/restaurante.jpg) no-repeat center;
+    background-size: cover; /* Asegura que la imagen cubra todo el espacio de la sección */
 }
 
 /* Estilos de la barra de navegación */
@@ -199,9 +199,10 @@ p {
     margin-left: calc((100% - 100vw) / 2);
     margin-bottom: 50px;
     border-radius: 10px; /* Bordes redondeados */
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
+    height: 600px;
 }
 
 #mesas-container .title {
@@ -212,10 +213,12 @@ p {
 
 /* Contenedor de mesas específico en usertable con formato cuadrado */
 .table-container {
-    display: grid;
+    height: 200px;
+    padding-bottom: 200px;
+    display: flex;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 50px; /* Espacio entre las mesas */
+    gap: 90px; /* Espacio entre las mesas */
     justify-items: center;
     align-items: center;
 }
@@ -226,9 +229,10 @@ p {
     border-radius: 10px;
     text-align: center;
     color: #fff;
-    padding: 10px;
-    width: 120px; /* Tamaño ajustado para que entren todas las imágenes */
-    height: 120px;
+    padding: 25px;
+    padding-top: 40px;
+    width: 140px; /* Tamaño ajustado para que entren todas las imágenes */
+    height: 180px;
     box-shadow: 0 0.3rem 5rem rgba(0, 0, 0, 0.5);
 }
 
@@ -447,4 +451,11 @@ td.empty {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 999;
+}
+
+.espacio{
+    color: transparent;
+    width: 100%;
+    height: 300px;
+    padding: 80px ;
 }
