@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Reservas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        /* Contenedor principal de la barra */
+        .bar-container {
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #fff;
+            border: 1px solid #ddd;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            max-height: 60px;
+            margin-bottom: 20px;
+        }
+
+        .bar-container.open {
+            max-height: 1000px;
+        }
+
+        .bar-header {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            cursor: pointer;
+            background-color: #f9f9f9;
+        }
+
+        .bar-header h3 {
+            font-size: 16px;
+            margin: 0;
+            flex-grow: 1;
+            color: #555;
+        }
+
+        .toggle-icon {
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .bar-container.open .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .bar-content {
+            padding: 15px;
+            background-color: #fff;
+            color: #555;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Estilos de la tarjeta de reserva dentro de la barra */
+        .card {
+            display: flex;
+            background-color: white;
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .card img {
+            width: 120px;
+            height: auto;
+            border-right: 1px solid #ddd;
+        }
+
+        .card-content {
+            padding: 15px;
+            width: 100%;
+        }
+
+        .card-header {
+            font-weight: bold;
+            font-size: 18px;
+            color: #5a5a5a;
+            margin-bottom: 5px;
+        }
+
+        .card-info p {
+            margin: 5px 0;
+            color: #7d7d7d;
+            font-size: 14px;
+        }
+
+        .button-cancel {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .button-cancel:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mis Reservas</h1>
+
+    <!-- Contenedor de Reservas para Hoy -->
+    <div class="bar-container" id="barContainerHoy">
+        <div class="bar-header" onclick="toggleBar('barContainerHoy')">
+            <h3>Reservas para hoy</h3>
+            <span class="toggle-icon">▼</span>
+        </div>
+        <div class="bar-content">
+            <div class="card">
+                <img src="/images/reserva.jpg" alt="Mesa con Plato">
+                <div class="card-content">
+                    <div class="card-header">Resturante Luxxxo's</div>
+                    <div class="card-info">
+                        <p><strong>Fecha de reserva:</strong> 10/11/2024</p>
+                        <p><strong>Numero de mesa:</strong> 1</p>
+                        <p><strong>Cantidad de personas:</strong> 3</p>
+                        <p><strong>Persona que hizo la reserva:</strong> Juan Pérez</p>
+                    </div>
+                    <button class="button-cancel">Cancelar reserva</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenedor de Reservas Pasadas -->
+    <div class="bar-container" id="barContainerPasadas">
+        <div class="bar-header" onclick="toggleBar('barContainerPasadas')">
+            <h3>Reservas pasadas</h3>
+            <span class="toggle-icon">▼</span>
+        </div>
+        <div class="bar-content">
+            <div class="card">
+                <img src="/images/reserva.jpg" alt="Mesa con Plato">
+                <div class="card-content">
+                    <div class="card-header">Resturante Luxxxo's</div>
+                    <div class="card-info">
+                        <p><strong>Fecha de reserva:</strong> 10/10/2024</p>
+                        <p><strong>Numero de mesa:</strong> 4</p>
+                        <p><strong>Cantidad de personas:</strong> 2</p>
+                        <p><strong>Persona que hizo la reserva:</strong> Juan Pérez</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="/images/reserva.jpg" alt="Mesa con Plato">
+                <div class="card-content">
+                    <div class="card-header">Resturante Luxxxo's</div>
+                    <div class="card-info">
+                        <p><strong>Fecha de reserva:</strong> 10/19/2024</p>
+                        <p><strong>Numero de mesa:</strong> 4</p>
+                        <p><strong>Cantidad de personas:</strong> 5</p>
+                        <p><strong>Persona que hizo la reserva:</strong> Juan Pérez</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="/images/reserva.jpg" alt="Mesa con Plato">
+                <div class="card-content">
+                    <div class="card-header">Resturante Luxxxo's</div>
+                    <div class="card-info">
+                        <p><strong>Fecha de reserva:</strong> 10/08/2024</p>
+                        <p><strong>Numero de mesa:</strong> 1</p>
+                        <p><strong>Cantidad de personas:</strong> 3</p>
+                        <p><strong>Persona que hizo la reserva:</strong> Juan Pérez</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleBar(barId) {
+            const barContainer = document.getElementById(barId);
+            barContainer.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
