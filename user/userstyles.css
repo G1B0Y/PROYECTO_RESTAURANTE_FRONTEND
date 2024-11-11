@@ -125,7 +125,7 @@ p {
     align-items: center;
 }
 
-/* Sección "Menú" con fondo sólido */
+/* Sección específica para userhome */
 #menu {
     width: 100vw;
     padding: 50px 20px;
@@ -136,7 +136,6 @@ p {
     margin-bottom: 450px; /* Incremento del margen inferior para espacio extra */
 }
 
-/* Estilos para la imagen en "Menú" */
 #menu img {
     width: 100%;
     max-width: 600px;
@@ -150,7 +149,7 @@ p {
     margin-top: 15px;
 }
 
-/* Sección "Nosotros" con fondo sólido */
+/* Sección "Nosotros" específica para userhome */
 #nosotros {
     width: 100vw;
     padding: 50px 20px;
@@ -162,7 +161,6 @@ p {
     margin-bottom: 450px; /* Espacio extra debajo de "Nosotros" */
 }
 
-/* Estilos para el contenedor de las cajas en "Nosotros" */
 .box-container {
     display: flex;
     justify-content: center;
@@ -170,9 +168,8 @@ p {
     text-align: center;
 }
 
-/* Cajas individuales en "Nosotros" con fondo sólido */
-.box-container .box {
-    height: 11rem;
+.box {
+    height: auto;
     width: 17rem;
     background: #101010;
     text-align: center;
@@ -182,29 +179,73 @@ p {
     color: #fff;
 }
 
-.box-container .box i {
-    height: 3rem;
-    width: 3rem;
-    line-height: 3rem;
-    text-align: center;
-    border-radius: 50%;
-    color: #fff;
-    background: #9c27b0;
-    font-size: 2rem;
-    margin: 1rem 0;
-}
-
-.box-container .box h3 {
+.box h3 {
     font-size: 20px;
     color: #9c27b0;
 }
 
-.box-container .box p {
+.box p {
     padding: 0 15px;
     font-size: 16px;
 }
 
-/* Sección "Contacto" con fondo sólido */
+/* Estilo específico para el contenedor "MESAS" */
+#mesas-container {
+    width: 100vw;
+    padding: 50px 20px;
+    background: #1f1d1d; /* Fondo sólido */
+    text-align: center;
+    box-sizing: border-box;
+    margin-left: calc((100% - 100vw) / 2);
+    margin-bottom: 50px;
+    border-radius: 10px; /* Bordes redondeados */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mesas-container .title {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Contenedor de mesas específico en usertable con formato cuadrado */
+.table-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 50px; /* Espacio entre las mesas */
+    justify-items: center;
+    align-items: center;
+}
+
+/* Estilo de las mesas dentro del contenedor */
+.table-box {
+    background: #101010;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+    width: 120px; /* Tamaño ajustado para que entren todas las imágenes */
+    height: 120px;
+    box-shadow: 0 0.3rem 5rem rgba(0, 0, 0, 0.5);
+}
+
+.table-box img {
+    width: 100%;
+    max-width: 80px; /* Tamaño reducido de las imágenes */
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.table-box h3 {
+    font-size: 14px;
+    color: #9c27b0;
+}
+
+
+/* Sección "Contacto" */
 .contact {
     width: 100vw;
     padding: 50px 20px;
@@ -212,10 +253,10 @@ p {
     text-align: center;
     box-sizing: border-box;
     margin-left: calc((100% - 100vw) / 2);
-    margin-top: 450px; /* Espacio adicional entre "Nosotros" y "Contacto" */
+    margin-top: 50px;
+    border-radius: 10px; /* Bordes redondeados */
 }
 
-/* Ajuste de estilo para el título y texto de contacto */
 .contact .title {
     font-size: 2rem;
     color: #fff;
@@ -228,22 +269,182 @@ p {
     margin: 5px;
 }
 
-/* Ajuste de desplazamiento para anclas (Inicio, Menú, Nosotros, Contacto) */
-#inicio, #menu, #nosotros, #contacto {
-    padding-top: 80px;
-    margin-top: -80px;
+/* Estilos específicos para tableavailability */
+
+body.tableavailability {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Estilos para la visualización en pantallas pequeñas */
-@media (max-width: 768px) {
-    .title {
-        margin-bottom: 0;
-        font-size: 40px;
-    }
-    .sau {
-        height: auto;
-    }
-    .navbar {
-        display: none;
-    }
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.controls {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.controls button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.controls button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.month {
+    display: none;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    transition: opacity 0.5s;
+}
+
+.month h2 {
+    background-color: #4caf50;
+    color: white;
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+    font-size: 1.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    table-layout: fixed;
+}
+
+th {
+    background-color: #4caf50;
+    color: white;
+    padding: 8px;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+}
+
+td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    vertical-align: top;
+    height: 80px;
+    background-color: #fafafa;
+    font-size: 0.85rem;
+    cursor: pointer;
+    position: relative;
+}
+
+td:hover {
+    background-color: #f1f1f1;
+}
+
+td::after {
+    content: "Consultar";
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+    font-size: 0.8rem;
+    background-color: #f0f0f0;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+td:hover::after {
+    display: block;
+}
+
+td.empty {
+    background-color: #f0f0f0;
+    cursor: default;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.popup-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.popup-content h2 {
+    margin-bottom: 15px;
+}
+
+.popup-content input[type="time"] {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.popup-content button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.popup-content button:hover {
+    background-color: #45a049;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }
