@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Reservas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #000;
+            background: url(../images/fondoreport.jpeg)no-repeat center center fixed;
+            background-size: cover;
+        }
+        .report-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .filter-section {
+            text-align: left;
+            color: #004080;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        .filter-section span {
+            font-weight: bold;
+        }
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+        th {
+            background-color: #004080;
+            color: #000;
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        tfoot {
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #000;
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('URL_DE_TU_IMAGEN') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1; /* Ajusta la opacidad para hacer la imagen más o menos visible */
+    z-index: -1;
+    </style>
+</head>
+<body>
+
+    <div class="report-title">Reporte de Reservas</div>
+
+    <div class="filter-section">
+        <p><span>Departamento:</span>Contabilidad</p>
+        <p><span>Filtro:</span> Todas las Reservas</p>
+        <p><span>Categoría:</span> Todas</p>
+        <p><span>Orden:</span> Número de Mesa</p>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Numero de Mesa</th>
+                    <th>Numero de Comensales</th>
+                    <th>Horario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>4</td>
+                    <td>1:30 pm - 2:00 pm</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>6</td>
+                    <td>10:00 am - 11:30 am</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>8</td>
+                    <td>4:00 pm - 5:30 pm</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>3</td>
+                    <td>7:00 pm - 8:30 pm</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" style="text-align: right;">Total Reservas: 4</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="footer">
+        <p>Página 1 de 1</p>
+        <p>Generado por Restaurante's Lucho</p>
+        <p>Fecha: <script>document.write(new Date().toLocaleDateString());</script></p>
+    </div>
+
+    <div class="report-header">
+        <img src="../images/luxho.jpg" alt="Logotipo del Restaurante" class="logo" width="105" height="105">
+        <div class="report-title">Reporte de Reservas</div>
+        <button onclick="exportToPDF()" class="btn-export">Exportar a PDF</button>
+    </div>
+    
+    <div class="stats-summary">
+        <p><strong>Total de Reservas:</strong> 4</p>
+        <p><strong>Promedio de Comensales por Mesa:</strong> 5.3</p>
+        <p><strong>Horario más Popular:</strong> 1:30 pm - 2:00 pm</p>
+    </div>
+    
+    <script>
+    function exportToPDF() {
+        // Lógica para exportar el reporte a PDF
+    }
+    </script>
+
+</body>
+</html>
