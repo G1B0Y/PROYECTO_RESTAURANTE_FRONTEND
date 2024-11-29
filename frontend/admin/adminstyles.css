@@ -8,7 +8,7 @@
 
 /* Estilos básicos del cuerpo */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Poppins", sans-serif;
     margin: 0;
     background: url(../images/restaurante.jpg) no-repeat center center fixed; /* Fondo de imagen fijo */
     background-size: cover;
@@ -91,15 +91,15 @@ p {
 }
 
 /* Estilo para los botones */
-.btn {
+.btn{
     display: inline-block;
     margin-top: 15px;
     padding: 10px 40px;
-    border: 2px solid #9c27b0;
-    color: #fff;
+    border: 2px solid #740001;
+    color: #000;
     text-decoration: none;
-    background: #9c27b0;
-    transition: background 0.3s;
+    background: #eeba30;
+    transition: background 0.3s
 }
 
 .btn:hover {
@@ -275,7 +275,7 @@ p {
 /* Estilos específicos para tableavailability */
 
 body.tableavailability {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Poppins", sans-serif;
     margin: 20px;
     background-color: #f4f4f4;
     display: flex;
