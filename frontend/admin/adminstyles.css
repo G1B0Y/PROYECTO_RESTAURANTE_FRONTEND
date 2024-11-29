@@ -23,14 +23,13 @@ header {
 }
 
 /* Estilos de la barra de navegación */
-.head {
+.head{
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 63px;
-    background: #171717;
+    background: #ae0001;
     position: fixed;
-    top: 0;
     width: 100%;
     z-index: 100;
 }
@@ -62,8 +61,8 @@ header {
     font-size: 20px;
 }
 
-.navbar a:hover {
-    background: #3f3f3f;
+.navbar a:hover{
+    background: #eeba30;
 }
 
 /* Estilo de fondo para el encabezado de la sección de inicio */
@@ -180,7 +179,7 @@ p {
 
 .box h3 {
     font-size: 24px;
-    color: #9c27b0;
+    color: #ae0001;
 }
 
 .box p {
@@ -471,7 +470,7 @@ td.empty {
     font-size: 18px;
     color: #fff;
     padding: 10px;
-    background: #171717;
+    background: #eeba30;
     border-radius: 5px;
 }
 
